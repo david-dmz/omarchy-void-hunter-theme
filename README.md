@@ -32,7 +32,7 @@ cp extras/bar/sysstats ~/.config/omarchy/bar/scripts/
 chmod +x ~/.config/omarchy/bar/scripts/sysstats
 ```
 
-Puis ajoute ce module dans `bar.layout.right` de `~/.config/omarchy/shell.json` :
+Puis ajoute ce module dans `bar.layout.left` de `~/.config/omarchy/shell.json`, juste après `omarchy.workspaces`, pour qu'il apparaisse à côté des espaces de travail :
 
 ```json
 { "id": "sysstats", "type": "command", "exec": "~/.config/omarchy/bar/scripts/sysstats", "interval": 2, "tooltip": "CPU / RAM", "onClick": "omarchy-launch-or-focus-tui btop" }
