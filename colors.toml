@@ -1,0 +1,36 @@
+# Void Hunter — inspiré des chasseurs Void de Destiny : mauve doux, ciel nocturne, accents feutrés
+mode = "dark"
+
+accent = "#a48fd1"
+selection = "#352d48"
+muted = "#5e5672"
+
+background = "#16141f"
+dark_background = "#110f18"
+darker_background = "#0c0b11"
+lighter_background = "#24202f"
+
+foreground = "#d6d0e0"
+dark_foreground = "#7d7590"
+light_foreground = "#c2bad0"
+bright_foreground = "#ece8f2"
+
+# Couleurs de terminal désaturées (Solar, Arc, Strand, Exotique…)
+red = "#c7707a"
+yellow = "#d8c08a"
+orange = "#d29a6e"
+green = "#8fb59a"
+cyan = "#7fb3c4"
+blue = "#8496cf"
+magenta = "#b48ad6"
+brown = "#6d5a4e"
+
+bright_red = "#d98a93"
+bright_yellow = "#e6d3a3"
+bright_green = "#a8c9b1"
+bright_cyan = "#9ac6d4"
+bright_blue = "#a0afdc"
+bright_magenta = "#c9a6e4"
+
+hyprland_active_border = "rgba(a48fd1ee) rgba(6c5a9cee) 45deg"
+hyprland_inactive_border = "rgba(2a2538aa)"

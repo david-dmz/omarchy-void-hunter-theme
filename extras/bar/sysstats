@@ -1,0 +1,28 @@
+#!/bin/bash
+# Affiche l'utilisation CPU et RAM pour la barre Omarchy (format JSON Waybar).
+state="${XDG_RUNTIME_DIR:-/tmp}/omarchy-sysstats.cpu"
+
+read -r _ user nice system idle iowait irq softirq steal _ < /proc/stat
+total=$((user + nice + system + idle + iowait + irq + softirq + steal))
+idle_all=$((idle + iowait))
+
+cpu=0
+if [[ -r $state ]]; then
+  read -r prev_total prev_idle < "$state"
+  dt=$((total - prev_total)); di=$((idle_all - prev_idle))
+  ((dt > 0)) && cpu=$(( (100 * (dt - di) + dt / 2) / dt ))
+fi
+echo "$total $idle_all" > "$state"
+
+mem_total=$(awk '/^MemTotal:/ {print $2}' /proc/meminfo)
+mem_avail=$(awk '/^MemAvailable:/ {print $2}' /proc/meminfo)
+mem_used=$((mem_total - mem_avail))
+ram=$(( (100 * mem_used + mem_total / 2) / mem_total ))
+used_gb=$(awk -v k="$mem_used" 'BEGIN {printf "%.1f", k/1048576}')
+total_gb=$(awk -v k="$mem_total" 'BEGIN {printf "%.1f", k/1048576}')
+
+class=normal
+((cpu >= 90 || ram >= 90)) && class=critical
+
+printf '{"text":"󰍛 %d%%  󰘚 %d%%","tooltip":"CPU : %d%%\\nRAM : %s / %s Go (%d%%)","class":"%s"}\n' \
+  "$cpu" "$ram" "$cpu" "$used_gb" "$total_gb" "$ram" "$class"
