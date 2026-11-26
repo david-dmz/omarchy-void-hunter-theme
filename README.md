@@ -7,7 +7,7 @@ Un thème sombre et reposant pour [Omarchy](https://omarchy.org), inspiré des c
 ## Installation
 
 ```bash
-omarchy theme install https://github.com/DavidMVgit-coder/omarchy-void-hunter-theme
+omarchy theme install https://github.com/david-dmz/omarchy-void-hunter-theme
 omarchy theme set void-hunter
 ```
 
